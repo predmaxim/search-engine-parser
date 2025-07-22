@@ -5,4 +5,11 @@
 *.txt
 *.html
 *.log
+# Игнорировать все json кроме системных
 *.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!jsconfig.json
+!*.config.json
+!*.rc.json
