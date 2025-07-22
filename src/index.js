@@ -1,5 +1,3 @@
-
-
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +9,8 @@ const config = {
   criteria: {
     method: 'OR',
     filters: [
-      { type: 'advertisement', value: 'бузулук' }
+      { type: 'advertisement', value: 'бузулук' },
+      { type: 'domain', value: 'buzuluk' },
     ]
   },
   ignoreDomains: [
@@ -20,7 +19,7 @@ const config = {
   ],
   pages: 3,
   delay: 5000,
-  yandexCookiesPath: 'ya.ru_cookies.json'
+  yandexCookiesPath: 'ya.ru_cookies.json' // Path to your Yandex cookies file. We recommend using it for better results.
 };
 
 
