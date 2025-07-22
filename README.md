@@ -1,52 +1,56 @@
-# sites-parser
+# search-engine-parser
 
-Парсер поисковой выдачи Яндекса для сбора ссылок по заданной тематике и региону.
+Yandex search results parser for collecting links by topic and region.
 
-## Описание
-Этот проект предназначен для автоматического сбора уникальных ссылок из поисковой выдачи Яндекса по заданной теме и региону. Скрипт использует Puppeteer для эмуляции браузера, поддерживает фильтрацию по ключевым словам и доменам, сохраняет результаты в текстовый файл.
+[Русская версия](./README_RU.md)
 
-## Возможности
-- Поиск по Яндексу с эмуляцией реального пользователя
-- Задание темы и региона поиска
-- Фильтрация по ключевым словам в сниппетах
-- Исключение нежелательных доменов
-- Сохранение уникальных ссылок в файл
-- Минимальный вывод в консоль (только прогресс и итог)
+## Description
+This project automatically collects unique links from Yandex search results for a given topic and region. The script uses Puppeteer to emulate a browser, supports filtering by keywords and domains, and saves results to a text file.
 
-## Быстрый старт
-1. Установите зависимости:
+## Features
+- Yandex search with real user emulation
+- Customizable topic and region
+- Filtering by keywords in snippets
+- Excluding unwanted domains
+- Saving unique links to a file
+- Minimal console output (progress and summary only)
+
+## Quick Start
+1. Install dependencies:
    ```bash
    npm install
    ```
-2. Запустите парсер:
+2. Run the parser:
    ```bash
    npm run start
    ```
 
-## Настройки
-Все параметры настраиваются в файле `src/index.js` в объекте `config`:
-- `topic` — тема поиска
-- `location` — регион поиска
-- `criteria` — фильтры по ключевым словам
-- `ignoreDomains` — список доменов для исключения
-- `pages` — количество страниц для парсинга
-- `delay` — задержка между страницами (мс)
-- `yandexCookiesPath` — путь к cookies для Яндекса (опционально)
+## Configuration
+All parameters are set in `src/index.js` in the `config` object:
+- `topic` — search topic
+- `location` — search region
+- `criteria` — keyword filters
+- `ignoreDomains` — list of domains to exclude
+- `pages` — number of pages to parse
+- `delay` — delay between pages (ms)
+- `yandexCookiesPath` — path to Yandex cookies (optional, recommended)
 
-## Результаты
-Ссылки сохраняются в текстовый файл с датой и временем запуска в имени. Пример:
+## Results
+Links are saved to a text file with the date and time in the filename. Example:
 ```
 22-07-2025-14-30-12-yandex.txt
 ```
 
-## Зависимости
+## Dependencies
 - [Node.js](https://nodejs.org/)
 - [Puppeteer](https://pptr.dev/)
 
-## Важно
-- Для корректной работы используйте актуальные cookies Яндекса (опционально).
-- Все результаты и временные файлы игнорируются в git (см. `.gitignore`).
-- Google-поиск не поддерживается (удалён по требованию).
+## Notes
+- For best results, use up-to-date Yandex cookies (optional, but recommended).
+- All result and temp files are ignored by git (see `.gitignore`).
+- Google search is not supported (removed by request).
 
-## Лицензия
+## License
 MIT
+
+[Русская версия](./README_RU.md)
