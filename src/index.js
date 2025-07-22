@@ -52,7 +52,7 @@ async function parseYandexResults(config) {
   }
   for (let page = 0; page < config.pages; page++) {
     const url = buildYandexQuery(config.topic, config.location, page);
-    process.stdout.write(`\rПарсинг страницы ${page + 1} из ${config.pages}   `);
+    process.stdout.write(`\rParsing page ${page + 1} of ${config.pages}   `);
     try {
       await pageObj.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
       await pageObj.setGeolocation({ latitude: 52.7881, longitude: 52.2634 });
@@ -92,7 +92,7 @@ async function parseYandexResults(config) {
   process.stdout.write('\n');
   await browser.close();
   if (results.size === 0) {
-    console.warn('\nНе найдено ни одного результата. Проверьте структуру HTML или наличие блокировки.');
+    console.warn('\nNo results found. Check HTML structure or possible blocking.');
   }
   return Array.from(results);
 }
@@ -103,7 +103,7 @@ async function main(config) {
   try {
     const yandexResults = await parseYandexResults(config);
     const uniqueYandex = [...new Set(yandexResults)];
-    console.log(`\nНайдено уникальных сайтов (Яндекс): ${uniqueYandex.length}`);
+    console.log(`\nUnique sites found (Yandex): ${uniqueYandex.length}`);
     if (uniqueYandex.length > 0) {
       const now = new Date();
       const pad = n => n.toString().padStart(2, '0');
@@ -112,11 +112,11 @@ async function main(config) {
       let fileContent = 'Yandex:\n';
       fileContent += uniqueYandex.map((url, i) => `${i + 1}. ${url}`).join('\n') + '\n';
       fs.writeFileSync(filePath, fileContent, 'utf8');
-      console.log(`Результаты сохранены в файл: ${fileName}`);
+      console.log(`Results saved to file: ${fileName}`);
     }
     return uniqueYandex;
   } catch (error) {
-    console.error('Ошибка при парсинге:', error.message);
+    console.error('Parsing error:', error.message);
     if (error.stack) console.error(error.stack);
     return [];
   }
